@@ -32,7 +32,9 @@ namespace WebPageAutomation
                 var settings = new CefSettings()
                 {
                     //By default CefSharp will use an in-memory cache, you need to specify a Cache Folder to persist data
-                    CachePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "CefSharp\\Cache")
+                    CachePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "CefSharp\\Cache"),
+                    WindowlessRenderingEnabled=true
+                    
                 };
 
                 //Perform dependency check to make sure all relevant resources are in our output directory.
@@ -64,7 +66,12 @@ namespace WebPageAutomation
                     //Give the browser a little time to render
                     await Task.Delay(4000);
 
-                    await browser.EvaluateScriptAsync(Scripts.SelectMakeScript);
+                  //  await browser.EvaluateScriptAsync(Scripts.SelectMakeScript);
+                    
+                    //Give the browser a little time to render
+                    await Task.Delay(4000);
+
+                    await browser.EvaluateScriptAsync(Scripts.SelectModelScript);
 
         
                   

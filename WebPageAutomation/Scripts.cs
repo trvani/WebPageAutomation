@@ -17,7 +17,7 @@ namespace WebPageAutomation
                                   var cp = tm.localeCompare(v);
                                   if (cp == 0)
                                   {
-                                       select.children[i].selected = true;
+                                       select.children[i].selected = true;   
                                   }
                               }";
 

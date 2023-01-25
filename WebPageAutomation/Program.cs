@@ -22,7 +22,7 @@ namespace WebPageAutomation
 #endif
 
 
-            const string testUrl = "https://www.cars.com/";
+            const string testUrl = "https://www.cars.com";
 
             Console.WriteLine("You may see Chromium debugging output, please wait...");
             Console.WriteLine();
@@ -36,6 +36,8 @@ namespace WebPageAutomation
                     WindowlessRenderingEnabled=true
                     
                 };
+
+               // settings.CefCommandLineArgs.Add("disable-web-security","disable-web-security");
 
                 //Perform dependency check to make sure all relevant resources are in our output directory.
                 var success = await Cef.InitializeAsync(settings, performDependencyCheck: true, browserProcessHandler: null);
@@ -52,7 +54,7 @@ namespace WebPageAutomation
 
                     if (!initialLoadResponse.Success)
                     {
-                        throw new Exception(string.Format("Page load failed with ErrorCode:{0}, HttpStatusCode:{1}", initialLoadResponse.ErrorCode, initialLoadResponse.HttpStatusCode));
+                       // throw new Exception(string.Format("Page load failed with ErrorCode:{0}, HttpStatusCode:{1}", initialLoadResponse.ErrorCode, initialLoadResponse.HttpStatusCode));
                     }
 
 
@@ -66,7 +68,7 @@ namespace WebPageAutomation
                     //Give the browser a little time to render
                     await Task.Delay(4000);
 
-                  //  await browser.EvaluateScriptAsync(Scripts.SelectMakeScript);
+                    await browser.EvaluateScriptAsync(Scripts.SelectMakeScript);
                     
                     //Give the browser a little time to render
                     await Task.Delay(4000);
@@ -77,7 +79,7 @@ namespace WebPageAutomation
                   
 
                     //Give the browser a little time to render
-                    await Task.Delay(500);
+                    await Task.Delay(4500);
                     // Wait for the screenshot to be taken.
                     var bitmapAsByteArray = await browser.CaptureScreenshotAsync();
 

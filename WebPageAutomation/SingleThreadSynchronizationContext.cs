@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CefSharp.Internals;
+using CefSharp;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,5 +32,6 @@ namespace WebPageAutomation
         {
             queue.CompleteAdding();
         }
+               
     }
 }
